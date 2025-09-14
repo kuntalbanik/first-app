@@ -1,0 +1,59 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content> -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Header</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <h1>Content</h1>
+  <ion-list class="list-any">
+
+    <!-- New style for loop in Angular -->
+    @for(item of items; track $index) {
+    <ion-item [detail]="true" [routerLink]="['/', 'home', 'items', item?.id]">
+      <!-- (click)="navigate('item?.id') -->
+    <ion-label>
+      {{item?.name}}
+      <p>
+        <ion-text color="medium"> {{item?.description}} </ion-text>
+      </p>
+    </ion-label>
+    </ion-item>
+    }
+
+    <!-- Old style for loop in Angular -->
+    <!--  -->
+    <!-- <ion-item *ngFor="let item of items" [detail]="true">
+      <ion-label> -->
+    <!-- {{item?.name}} -->
+    <!-- <p> -->
+    <!-- <ion-text color="medium"> {{item?.description}} </ion-text> -->
+    <!-- If data not found then error should not shown, so used ?  -->
+    <!-- </p> -->
+    <!-- </ion-label> -->
+    <!--  -->
+    <!-- <ion-button
+        slot="end"
+        [strong]="true"
+        expand="block"
+        fill="clear"
+        color="secondary"
+        (click)="view(item)"
+      >
+        View</ion-button
+      > -->
+    <!-- </ion-item> -->
+  </ion-list>
+</ion-content>
