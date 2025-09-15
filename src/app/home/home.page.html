@@ -19,18 +19,19 @@
 <ion-content class="ion-padding">
   <h1>Content</h1>
   <ion-list class="list-any">
-
     <!-- New style for loop in Angular -->
     @for(item of items; track $index) {
     <ion-item [detail]="true" [routerLink]="['/', 'home', 'items', item?.id]">
       <!-- (click)="navigate('item?.id') -->
-    <ion-label>
-      {{item?.name}}
-      <p>
-        <ion-text color="medium"> {{item?.description}} </ion-text>
-      </p>
-    </ion-label>
+      <ion-label>
+        {{item?.name}}
+        <p>
+          <ion-text color="medium"> {{item?.description}} </ion-text>
+        </p>
+      </ion-label>
     </ion-item>
+    } @empty {
+      "Nothing found"
     }
 
     <!-- Old style for loop in Angular -->
@@ -56,4 +57,17 @@
       > -->
     <!-- </ion-item> -->
   </ion-list>
+
+  @if(image) {
+
+    <img [src]="image"/>
+  }
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" color="secondary" (click)="uploadImage()"
+      >Upload Grocery List</ion-button
+    >
+  </ion-toolbar>
+</ion-footer>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton } from '@ionic/angular/standalone';
 import { ActivatedRoute } from '@angular/router';
+import { Grocery } from 'src/app/services/grocery/grocery';
 
 @Component({
   selector: 'app-item-detail',
@@ -14,23 +15,10 @@ import { ActivatedRoute } from '@angular/router';
 export class ItemDetailPage implements OnInit {
 
   item: any;
-  items: any[] = [
-    {
-      id: 1,
-      name: 'Tomato',
-      description: 'Get fresh tomato'
-    },
-    {
-      id: 2,
-      name: 'Potato',
-      description: 'Big potatos'
-    }
-  ];
-
-
   private route = inject(ActivatedRoute);
-  
+  private groceryService = inject(Grocery);
 
+  
   constructor() { }
 
   ngOnInit() {
@@ -41,7 +29,8 @@ export class ItemDetailPage implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     console.log(id);
 
-    this.item = this.items.find(item => item.id == id);
+    const items = this.groceryService.getItems();
+    this.item = items.find(item => item.id == id);
     console.log(this.item);
   }
 
